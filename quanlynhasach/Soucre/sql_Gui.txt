@@ -1,0 +1,143 @@
+--proc Gui
+-- proc xem danh sach hoc phan
+create or alter procedure Xemdanhsachhocphan
+as
+begin
+	select ds.MaDS,hp.MaHocPhan,ds.TenDanhSach,hp.TenHocPhan,ds.HocKy,ds.Nam
+	from DanhSachHocPhan as ds,HocPhan as hp
+	where ds.MaDS=hp.MaDS
+end;
+go
+---proc xem danh sach lop hoc phan
+create or alter procedure Xemdanhsachlophocphan(@mahp nvarchar(10))
+as
+begin
+	select lhp.MaLopHP,lhp.TenLopHP,lhp.SiSoToiDa,lhp.SiSo
+	from LopHocPhan as lhp
+	where lhp.MaHocPhan=@mahp;
+end;
+go
+--proc xem phieu dang ky hoc phan cua 1 sv
+create or alter procedure Xemphieudangkyhocphan(@mssv nvarchar(10))
+as
+begin
+	select * from PhieuDangKyHocPhan as pdk where pdk.MSSV=@mssv
+end;
+go
+----------------proc thi hoc phan------------------
+----------proc xem danh sach lop hoc phan da dang ky cua 1 sv
+create or alter procedure Xemdanhsachlophocphandadk(@mssv nvarchar(10))
+as
+begin
+	select distinct d.TenHocPhan,d.HocKy,d.NamHoc,d.Diem from PhieuDKLopHP as pdk,BangDiem_HocPhan as d where d.MSSV=@mssv and d.MaLopHP=pdk.MaLopHP
+end;
+go
+--------proc Xem danh sach lop hoc phan can thi cua 1 sv
+create or alter procedure Xemdanhsachlophocphancanthi(@mssv nvarchar(10))
+as
+begin
+
+	select distinct d.MaLopHP,d.TenHocPhan,d.HocKy,d.NamHoc,d.Diem from PhieuDKLopHP as pdk,BangDiem_HocPhan as d where d.MSSV=@mssv and d.MaLopHP=pdk.MaLopHP and d.Diem <5
+end;
+go
+-------proc update diem HP cua sinh vien
+create or alter procedure Updatediem(@mssv nvarchar(10),@malophp nvarchar(10))
+as
+begin
+	Update BangDiem_HocPhan SET	Diem=9 Where MSSV=@mssv and MaLopHP=@malophp;
+end;
+go
+-----proc xem lich thi
+create or alter procedure selectLichTHi
+as
+begin
+	select LT.MaLopHP as MaLop,LT.NgayThi,LT.GioThi,LT.LoaiThi,LT.DiaDiem,LT.PhongThi,LT.HocKy,LT.NamHoc from LichThi as LT
+end;
+go
+-----proc select lich thi hoc phan cua 1 sinh vien
+Create or Alter procedure Sel_LichThi_sv(@mssv nvarchar(10))
+as
+begin
+	if(not exists (select * from LichThi ))
+	        return
+	select distinct LT.MaLichThi,LT.NgayThi,LT.GioThi,LT.LoaiThi,LT.DiaDiem,LT.HocKy,lt.NamHoc,lt.GVCoiThi
+	from LichThi as LT,BangDiem_ChuyenDe as dcd,BangDiem_ChungChi as dcc,BangDiem_HocPhan as dhp
+	 where  ( LT.MaLopHP=dhp.MaLopHP) 
+	and (dhp.MSSV=@mssv)
+end;
+GO
+---proc select danh sach sinh vien
+Create or Alter procedure Sel_dssv
+as
+begin
+	if(not exists (select * from SinhVien ))
+	        return
+	select distinct sv.MSSV,sv.HoTenHS,sv.Khoa,sv.TinhTrang from SinhVien as sv where sv.TinhTrang='Dang hoc'
+end;
+go
+---proc insert sinh vien du thi
+Create or Alter procedure Ins_SV_DuThi_HP(@MaLichThi nvarchar(10), @mssv NVARCHAR(8))
+as
+begin
+	if(NOT EXISTS (select * from LichThi where MaLichThi=@MaLichThi))
+	        RETURN
+	IF(NOT EXISTS (select * from SinhVien where MSSV=@mssv))
+	        RETURN
+	IF(EXISTS (select * from DSSV_DuThi where MaLichThi=@MaLichThi and MSSV=@mssv))
+	        RETURN
+	DECLARE @TT NVARCHAR(20);
+	SET @TT=(	SELECT phi.TinhTrang 
+				FROM HocPhi phi, LichThi lt
+				WHERE phi.MSSV=@mssv AND lt.MaLichThi=@MaLichThi AND phi.MaLopHP=lt.MaLopHP)
+	DECLARE @giamThi NVARCHAR(8);
+	SET @giamThi=(	SELECT GVCoiThi 
+					FROM LichThi 
+					WHERE MaLichThi=@MaLichThi)
+	INSERT INTO DSSV_DuThi VALUES (@MaLichThi,@mssv,@giamThi,N'DuThi',0);
+end;
+-----proc select danh sach sinh vien du thi
+Create or Alter procedure sel_DSSVDT
+as
+begin
+	if(NOT EXISTS (select * from DSSV_DuThi))
+	        RETURN
+	select * from DSSV_DuThi
+end;
+go
+------proc select phieu dang ky tot nghiep
+Create or Alter procedure sel_PDKTN
+as
+begin
+	if(NOT EXISTS (select * from PhieuDangKyTotNghiep,BangDiem_HocPhan))
+	        RETURN
+	select distinct pdk.MSSV,dhp.TenHocPhan,dhp.Diem,pdk.TinhTrang from PhieuDangKyTotNghiep as pdk, BangDiem_HocPhan as dhp where pdk.MSSV=dhp.MSSV and pdk.TinhTrang!='Da Tot Nghiep' and dhp.Diem>=5
+end;
+GO
+-------proc select ket qua tot nghiep
+go
+Create or Alter procedure sel_KQTN
+as
+begin
+	if(NOT EXISTS (select * from PhieuDangKyTotNghiep,BangDiem_HocPhan))
+	        RETURN
+	select distinct pdk.MSSV,dhp.TenHocPhan,dhp.Diem,pdk.TinhTrang from PhieuDangKyTotNghiep as pdk, BangDiem_HocPhan as dhp where pdk.MSSV=dhp.MSSV and pdk.TinhTrang='Da Tot Nghiep'
+end;
+GO
+--------proc update phieu dang ky tot nghiep
+go
+Create or Alter procedure update_PDKTN
+as
+begin
+	if(NOT EXISTS (select * from PhieuDangKyTotNghiep,BangDiem_HocPhan))
+	        RETURN
+	update PhieuDangKyTotNghiep SET TinhTrang='Da Tot Nghiep'  from PhieuDangKyTotNghiep as pdk, BangDiem_HocPhan as dhp where pdk.MSSV=dhp.MSSV and pdk.TinhTrang!='Da Tot Nghiep' and dhp.Diem>=5
+end;
+GO
+---------proc select danh sach lop hoc phan chua thi cua 1 sinh vien
+create or alter procedure Xemdanhsachlophocphancanthi(@mssv nvarchar(10))
+as
+begin
+
+	select distinct d.MaLopHP,d.TenHocPhan,d.HocKy,d.NamHoc,d.Diem from PhieuDKLopHP as pdk,BangDiem_HocPhan as d where d.MSSV=@mssv and d.MaLopHP=pdk.MaLopHP
+end;
+go

@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{654508C1-CA63-4FAB-B6AA-4CDBF7C6FE51}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>GUI</RootNamespace>
+    <AssemblyName>GUI</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DangKyChungChi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DangKyChungChi.Designer.cs">
+      <DependentUpon>DangKyChungChi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DangKyChuyenDe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DangKyChuyenDe.Designer.cs">
+      <DependentUpon>DangKyChuyenDe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DangKyHocPhan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DangKyHocPhan.designer.cs">
+      <DependentUpon>DangKyHocPhan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FMain_SV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FMain_SV.Designer.cs">
+      <DependentUpon>FMain_SV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FQuanLyHocTap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FQuanLyHocTap.Designer.cs">
+      <DependentUpon>FQuanLyHocTap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FThongTinCaNhan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FThongTinCaNhan.Designer.cs">
+      <DependentUpon>FThongTinCaNhan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fxemlichthi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fxemlichthi.Designer.cs">
+      <DependentUpon>Fxemlichthi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuenMatKhau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuenMatKhau.Designer.cs">
+      <DependentUpon>QuenMatKhau.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tracuukqht.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tracuukqht.Designer.cs">
+      <DependentUpon>Tracuukqht.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="DangKyChungChi.resx">
+      <DependentUpon>DangKyChungChi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DangKyChuyenDe.resx">
+      <DependentUpon>DangKyChuyenDe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DangKyHocPhan.resx">
+      <DependentUpon>DangKyHocPhan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FMain_SV.resx">
+      <DependentUpon>FMain_SV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FQuanLyHocTap.resx">
+      <DependentUpon>FQuanLyHocTap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FThongTinCaNhan.resx">
+      <DependentUpon>FThongTinCaNhan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fxemlichthi.resx">
+      <DependentUpon>Fxemlichthi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="QuenMatKhau.resx">
+      <DependentUpon>QuenMatKhau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tracuukqht.resx">
+      <DependentUpon>Tracuukqht.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BUS\BUS.csproj">
+      <Project>{7799b452-fd81-4a6f-9d8f-95db55ee255d}</Project>
+      <Name>BUS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{ea1a7176-1dde-425e-bf79-2287f58cc554}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

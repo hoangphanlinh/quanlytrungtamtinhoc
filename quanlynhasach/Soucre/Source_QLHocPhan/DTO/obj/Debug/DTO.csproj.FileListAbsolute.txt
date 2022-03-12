@@ -1,0 +1,9 @@
+D:\Đồ Án\Phân Tích & Thiết kế HTTT\đồ án\Source_QLHocPhan\DTO\bin\Debug\DTO.exe.config
+D:\Đồ Án\Phân Tích & Thiết kế HTTT\đồ án\Source_QLHocPhan\DTO\bin\Debug\DTO.exe
+D:\Đồ Án\Phân Tích & Thiết kế HTTT\đồ án\Source_QLHocPhan\DTO\bin\Debug\DTO.pdb
+D:\Đồ Án\Phân Tích & Thiết kế HTTT\đồ án\Source_QLHocPhan\DTO\obj\Debug\DTO.csproj.AssemblyReference.cache
+D:\Đồ Án\Phân Tích & Thiết kế HTTT\đồ án\Source_QLHocPhan\DTO\obj\Debug\DTO.Properties.Resources.resources
+D:\Đồ Án\Phân Tích & Thiết kế HTTT\đồ án\Source_QLHocPhan\DTO\obj\Debug\DTO.csproj.GenerateResource.cache
+D:\Đồ Án\Phân Tích & Thiết kế HTTT\đồ án\Source_QLHocPhan\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+D:\Đồ Án\Phân Tích & Thiết kế HTTT\đồ án\Source_QLHocPhan\DTO\obj\Debug\DTO.exe
+D:\Đồ Án\Phân Tích & Thiết kế HTTT\đồ án\Source_QLHocPhan\DTO\obj\Debug\DTO.pdb

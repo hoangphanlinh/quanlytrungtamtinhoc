@@ -1,0 +1,26 @@
+create proc HuyDKHocPhan
+(
+	@MaPhieuDKHP nvarchar(10)
+)
+as
+begin
+	DELETE PhieuDangKyHocPhan WHERE MaPhieuDKHP = @MaPhieuDKHP;
+end
+go
+create proc HuyDKChuyenDe
+(
+	@MaPhieuDKCD nvarchar(10)
+)
+as
+begin
+	DELETE PhieuDangKyCD WHERE MaPhieuDKCD = @MaPhieuDKCD;
+end
+go
+create proc HuyDKChungChi
+(
+	@MaPhieuDKCC nvarchar(10)
+)
+as
+begin
+	DELETE PhieuDangKyHPChungChi WHERE MaPhieuDK = @MaPhieuDKCC;
+end;
